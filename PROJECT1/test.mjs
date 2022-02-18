@@ -1,7 +1,8 @@
+//some comment
+
 /**
  * \brief Ukázkový skript pro první projekt předmětu WAP
  */
-
 /// Využijeme knihovnu, která je předmětem zadání projektu
 import { Tree } from "./tree.mjs";
 
