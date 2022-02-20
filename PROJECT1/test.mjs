@@ -1,4 +1,5 @@
 //some comment
+"use strict";
 
 /**
  * \brief Ukázkový skript pro první projekt předmětu WAP
@@ -18,33 +19,35 @@ let t = new Tree((a,b) => a < b);
 // insertValue(). Ta očekává jediný parametr - nově přidávanou hodnotu.
 input.forEach(i => t.insertValue(i));
 
-/// Ukázka použití knihovny:
-/// Iterátorů  vrácených generátory preorder(), inorder() a postorder() je
-/// možné vytvořit více, vzájemně budou na sobě nezávislé. Předpokládejte,
-/// že v průběhu iterace nebudou vkládány nové prvky.
-// console.log("Mix 2 iterátorů")
-// let pre1 = t.preorder()
-// console.log(pre1.next().value);
-// console.log(pre1.next().value);
-// let pre2 = t.preorder()
-// console.log(pre2.next().value);
-// console.log(pre1.next().value);
-// console.log(pre2.next().value);
-// console.log(pre2.next().value);
-// console.log(pre1.next().value);
+t.printTreeInorder();
 
-// /// Ukázka využití iterátoru získaného z generátoru preorder()
-// console.log("preorder")
-// for (let n of t.preorder()) {
-// 	console.log(n);
-// }
-// /// Ukázka využití iterátoru získaného z generátoru inorder()
-// console.log("inorder")
-// for (let n of t.inorder()) {
-// 	console.log(n);
-// }
-// /// Ukázka využití iterátoru získaného z generátoru postorder()
-// console.log("postorder")
-// for (let n of t.postorder()) {
-// 	console.log(n);
-// }
+// / Ukázka použití knihovny:
+// / Iterátorů  vrácených generátory preorder(), inorder() a postorder() je
+// / možné vytvořit více, vzájemně budou na sobě nezávislé. Předpokládejte,
+// / že v průběhu iterace nebudou vkládány nové prvky.
+console.log("Mix 2 iterátorů")
+let pre1 = t.preorder()
+console.log(pre1.next().value);
+console.log(pre1.next().value);
+let pre2 = t.preorder()
+console.log(pre2.next().value);
+console.log(pre1.next().value);
+console.log(pre2.next().value);
+console.log(pre2.next().value);
+console.log(pre1.next().value);
+
+/// Ukázka využití iterátoru získaného z generátoru preorder()
+console.log("preorder")
+for (let n of t.preorder()) {
+	console.log(n);
+}
+/// Ukázka využití iterátoru získaného z generátoru inorder()
+console.log("inorder")
+for (let n of t.inorder()) {
+	console.log(n);
+}
+/// Ukázka využití iterátoru získaného z generátoru postorder()
+console.log("postorder")
+for (let n of t.postorder()) {
+	console.log(n);
+}
