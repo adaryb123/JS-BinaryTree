@@ -9,7 +9,6 @@ function Node(value){
 export function Tree(compareFunction){
     this.compareFunction = compareFunction;
     this.root = null;
-
 }
 
 Tree.prototype.insertValue = function(new_value, node = this.root){
