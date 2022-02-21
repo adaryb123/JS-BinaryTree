@@ -30,15 +30,6 @@ Tree.prototype.insertValue = function(new_value, node = this.root){
     }
 }
 
-Tree.prototype.printTreeInorder = function(node = this.root){
-    if(node !== null)
-    {
-        this.printTreeInorder(node.left);
-        console.log(node.value, ", ");
-        this.printTreeInorder(node.right);
-    }
-}
-
 Tree.prototype.preorder = function*(node = this.root){
     if(node !== null)
     {
