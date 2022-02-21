@@ -1,53 +1,110 @@
-//some comment
 "use strict";
 
-/**
- * \brief Ukázkový skript pro první projekt předmětu WAP
- */
-/// Využijeme knihovnu, která je předmětem zadání projektu
 import { Tree } from "./tree.mjs";
 
-/// Testovací data, samozřejmě jde jen o příklad a pro finální
-/// hodnocení lze očekávat využití jiných dat
-let input = [5,7,2131345646,9,4,13,12415486];
+{
+	console.log("executing test 1 - natural numbers, compared from lowest to highest")
+	let input = [5,7,2131345646,9,4,13,12415486];
+	let preorderOutput = [5,4,7,2131345646,9,13,12415486]
+	let inorderOutput = [4,5,7,9,13,12415486,2131345646]
+	let postorderOutput = [4,12415486,13,9,2131345646,7,5]
+	const arrayEquals = (a, b) => JSON.stringify(a) == JSON.stringify(b);
+	let success = true;
+	let t = new Tree((a,b) => a < b);
+	input.forEach(i => t.insertValue(i));
 
-/// Knihovna musí poskytovat konstruktor Tree()
-/// Tento konstruktor očekává jediný parametr - řadící fukci, která
-/// vyhodnocuje, do kterého podstromu přidat novou hodnotu
-let t = new Tree((a,b) => a < b);
-// Objekty vytvořené konstruktorem Tree() musí implementovat metodu
-// insertValue(). Ta očekává jediný parametr - nově přidávanou hodnotu.
-input.forEach(i => t.insertValue(i));
+	let testOutput = []
+	for (let n of t.preorder())
+		testOutput.push(n);
+	if (!arrayEquals(preorderOutput,testOutput))
+		success = false;
 
-t.printTreeInorder();
+	testOutput = []
+	for (let n of t.inorder())
+		testOutput.push(n);
+	if (!arrayEquals(inorderOutput,testOutput))
+		success = false;
 
-// / Ukázka použití knihovny:
-// / Iterátorů  vrácených generátory preorder(), inorder() a postorder() je
-// / možné vytvořit více, vzájemně budou na sobě nezávislé. Předpokládejte,
-// / že v průběhu iterace nebudou vkládány nové prvky.
-console.log("Mix 2 iterátorů")
-let pre1 = t.preorder()
-console.log(pre1.next().value);
-console.log(pre1.next().value);
-let pre2 = t.preorder()
-console.log(pre2.next().value);
-console.log(pre1.next().value);
-console.log(pre2.next().value);
-console.log(pre2.next().value);
-console.log(pre1.next().value);
+	testOutput = []
+	for (let n of t.postorder())
+		testOutput.push(n);
+	if (!arrayEquals(postorderOutput,testOutput))
+		success = false;
 
-/// Ukázka využití iterátoru získaného z generátoru preorder()
-console.log("preorder")
-for (let n of t.preorder()) {
-	console.log(n);
+	if (success)
+		console.log("PASS")
+	else
+		console.log("FAIL")
 }
-/// Ukázka využití iterátoru získaného z generátoru inorder()
-console.log("inorder")
-for (let n of t.inorder()) {
-	console.log(n);
+
+
+{
+	console.log("executing test 2 - real numbers, compared from highest to lowest")
+	let input = [-0.7,59,-88,0,6.6666,6.6662,-18.32];
+	let preorderOutput = [-0.7,59,0,6.6666,6.6662,-88,-18.32]
+	let inorderOutput = [59,6.6666,6.6662,0,-0.7,-18.32,-88]
+	let postorderOutput = [6.6662,6.6666,0,59,-18.32,-88,-0.7]
+	const arrayEquals = (a, b) => JSON.stringify(a) == JSON.stringify(b);
+	let success = true;
+	let t = new Tree((a,b) => a > b);
+	input.forEach(i => t.insertValue(i));
+	let testOutput = []
+	for (let n of t.preorder())
+		testOutput.push(n);
+	if (!arrayEquals(preorderOutput,testOutput))
+		success = false;
+
+	testOutput = []
+	for (let n of t.inorder())
+		testOutput.push(n);
+	if (!arrayEquals(inorderOutput,testOutput))
+		success = false;
+
+	testOutput = []
+	for (let n of t.postorder())
+		testOutput.push(n);
+	if (!arrayEquals(postorderOutput,testOutput))
+		success = false;
+
+	if (success)
+		console.log("PASS")
+	else
+		console.log("FAIL")
 }
-/// Ukázka využití iterátoru získaného z generátoru postorder()
-console.log("postorder")
-for (let n of t.postorder()) {
-	console.log(n);
+
+
+{
+	console.log("executing test 3 - strings lexicografically")
+	let input = ['xgb','x','xggb','zzz','a','','xgbb'];
+	let preorderOutput = ['xgb','x','a','','xggb','xgbb','zzz']
+	let inorderOutput = ['','a','x','xgb','xgbb','xggb','zzz']
+	let postorderOutput = ['','a','x','xgbb','zzz','xggb','xgb']
+	const arrayEquals = (a, b) => JSON.stringify(a) == JSON.stringify(b);
+	let success = true;
+	let t = new Tree((a,b) => a < b);
+	input.forEach(i => t.insertValue(i));
+
+	let testOutput = []
+	for (let n of t.preorder())
+		testOutput.push(n);
+	if (!arrayEquals(preorderOutput,testOutput))
+		success = false;
+
+	testOutput = []
+	for (let n of t.inorder())
+		testOutput.push(n);
+	if (!arrayEquals(inorderOutput,testOutput))
+		success = false;
+
+	testOutput = []
+	for (let n of t.postorder())
+		testOutput.push(n);
+	if (!arrayEquals(postorderOutput,testOutput))
+		success = false;
+	
+	if (success)
+		console.log("PASS")
+	else
+		console.log("FAIL")
 }
+
