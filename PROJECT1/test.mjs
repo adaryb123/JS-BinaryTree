@@ -1,3 +1,9 @@
+/* 
+   Author : Adam Rybansky
+   Login : xryban00
+   Tested on Node.js version 17.5.0
+*/
+
 "use strict";
 
 import { Tree } from "./tree.mjs";
